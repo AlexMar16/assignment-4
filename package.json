@@ -18,10 +18,11 @@
   },
   "homepage": "https://github.com/AlexMar16/assignment-4#readme",
   "dependencies": {
+    "material-ui": "^0.20.0",
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-router-dom": "^4.2.2",
-    "prop-types": "^15.6.0"
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
