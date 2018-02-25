@@ -3,7 +3,7 @@ import React from 'react';
 class Cart extends React.Component {
     render() {
         return (
-            <div>This is cart!</div>
+            <h3 className="page-name">This is cart!</h3>
         );
     }
 }

@@ -3,7 +3,7 @@ import React from 'react';
 class Offers extends React.Component {
     render() {
         return (
-            <div>This is offer!</div>
+            <h3 className="page-name">This is offer!</h3>
         );
     }
 }

@@ -2,8 +2,8 @@ import React from 'react';
 
 class Pizzas extends React.Component {
     render() {
-        return (    
-            <div>HELLO PIZZAS</div>
+        return (
+            <h3 className="page-name">HELLO PIZZAS</h3>
         );
     }
 }
