@@ -9,13 +9,18 @@ import Offers from './components/Offers/Offers';
 import Cart from './components/Cart/Cart';
 import NavBar from './components/NavBar/NavBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import { thunk } from 'redux-thunk';
+import reducers from './reducers/reducers';
+import Menu from './components/Menu/Menu';
 
 /* import { PropTypes } from 'prop-types'; */
 
 
 class App extends React.Component {
     render() {
-        return(
+        return(/*
             <MuiThemeProvider>
                 <div>
                     <NavBar logo="https://images.unsplash.com/photo-1449785227466-10687c63e194?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=507e6ca0f324d075de0b9561d2ea4547&auto=format&fit=crop&w=3289&q=80" />
@@ -31,9 +36,10 @@ class App extends React.Component {
                             </Switch>
                         </div>
                 </div>
-            </ MuiThemeProvider>
+            </ MuiThemeProvider>*/
+            <Menu />
         );
     }
 }
 
-ReactDOM.render(<Router><App /></Router>, document.getElementById('app'));
+ReactDOM.render(<Provider store={createStore(reducers, applyMiddleware(thunk))}> <Router><App /></Router> </Provider>, document.getElementById('app'));
