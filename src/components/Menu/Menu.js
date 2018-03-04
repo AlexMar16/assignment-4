@@ -1,7 +1,7 @@
 import React from 'react';
-import connect from 'react-redux';
-import { Pizza } from '../Pizza/Pizza';
-import {getAllPizzas} from '../../actions/pizzaActions';
+import { connect } from 'react-redux';
+import Pizza from '../Pizza/Pizza';
+import { getAllPizzas } from '../../actions/pizzaActions';
 
 class Menu extends React.Component {
     componentDidMount() {
@@ -13,7 +13,7 @@ class Menu extends React.Component {
         const { pizza } = this.props;
         return(
                 <div className="container">
-                    {pizza.map(p => <Pizza key={p.id} pizza={p})}
+                    {pizza.map(p => <Pizza key={p.id} pizza={p}/>)}
                 </div>
         );
     }

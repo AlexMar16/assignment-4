@@ -3,9 +3,7 @@ import fetch from 'isomorphic-fetch';
 
 
 export const getAllPizzas = () => {
-    return dispatch => fetch('http://localhost:3500/api/pizzas').then(json => json.json()).then(data => dispatch(getAllPizzasSuccess(data))) 
-    })
-
+    return dispatch => fetch('http://localhost:3600/api/pizzas').then(json => json.json()).then(data => dispatch(getAllPizzasSuccess(data)));
 };
 
 const getAllPizzasSuccess = (pizzas) => {
