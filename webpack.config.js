@@ -27,7 +27,7 @@ module.exports = {
         historyApiFallback: true,
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
-        port: 3500,
+        port: 9000,
         open: true
     },
     devtool: 'inline-source-map',
