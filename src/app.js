@@ -2,18 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '../styles/main';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-/* Our components */
-import Pizzas from './components/Pizzas/Pizzas';
-import About from './components/About/About';
-import Offers from './components/Offers/Offers';
-import Cart from './components/Cart/Cart';
-import NavBar from './components/NavBar/NavBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers/reducers';
+/* Our components */
+import About from './components/About/About';
+import Offers from './components/Offers/Offers';
+import Cart from './components/Cart/Cart';
+import NavBar from './components/NavBar/NavBar';
 import Menu from './components/Menu/Menu';
+import PizzaDetail from './components/PizzaDetail/PizzaDetail';
 
 /* import { PropTypes } from 'prop-types'; */
 
@@ -27,10 +27,11 @@ class App extends React.Component {
                         <div className="container">
                             <Switch>
                                 <Route path="/offers" component={Offers} />
-                                <Route path="/pizzas" component={Menu} />
+                                <Route exact path="/pizzas" component={Menu} />
+                                <Route path="/pizzas/:pizzaId" component={PizzaDetail} />
                                 <Route path="/about" component={About} />
                                 <Route path="/cart" component={Cart} />
-                                <Route exact path="/" component={Pizzas} />
+                                <Route exact path="/" component={Menu} />
                             </Switch>
                         </div>
                 </div>

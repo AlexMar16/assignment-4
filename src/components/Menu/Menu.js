@@ -7,22 +7,21 @@ class Menu extends React.Component {
     componentDidMount() {
         const { getAllPizzas } = this.props;
         getAllPizzas();
-
     }
     render() {
-        const { pizza } = this.props;
+        const { pizzas } = this.props;
         return(
-                <div className="container">
-                    {pizza.map(p => <Pizza key={p.id} pizza={p}/>)}
-                </div>
+            <div className="container">
+                {pizzas.map(p => <Pizza key={p.id} pizza={p} />)}
+            </div>
         );
     }
 
 
 };
 
-const mapStateToProps = ({ pizza }) => {
-    return { pizza }
+const mapStateToProps = ({ pizzas }) => {
+    return { pizzas }
 
 };
 

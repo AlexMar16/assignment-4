@@ -1,17 +1,18 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-// import { Pizza } from '../Pizza/Pizza'
+import { Link } from 'react-router-dom';
 
 const Pizza = ({ pizza }) => {
-    const { name, description, price, image } = pizza;
+    const { id, name, description, price, image } = pizza;
     return(
-            <div className="pizza-wrapper">
-                <div className="pizza-image"></div>
-                    <img src={image} alt="" />
-                <div className="pizza-name">{name}</div>
-                <div className="pizza-description">{description}</div>
-                <div className="pizza-price">{price}</div>
+        <div className="pizza-wrapper">
+            <div className="pizza-image">
+                <img src={image} alt="" />
             </div>
+            <div className="pizza-name">{name}</div>
+            <div className="pizza-price">{price}</div>
+            <button><Link to={`pizzas/${id}`}>SEE WHAT'S UP</Link></button>
+        </div>
 
     );
 };
