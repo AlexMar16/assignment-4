@@ -1,6 +1,6 @@
 import { GET_ALL_PIZZAS } from '../constants/pizzaConstants';
 
-const pizzaReducer = (state = [], action) => {
+const pizzasReducer = (state = [], action) => {
     switch (action.type) {
         case GET_ALL_PIZZAS: return action.payload;
         default: return state;
@@ -8,4 +8,4 @@ const pizzaReducer = (state = [], action) => {
     }
 };
 
-export default pizzaReducer;
+export default pizzasReducer;
