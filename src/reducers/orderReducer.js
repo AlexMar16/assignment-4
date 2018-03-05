@@ -1,4 +1,4 @@
-import { GET_ORDERS_FROM_TELEPHONE } from '../constants/ordersConstants';
+import { GET_ORDERS_FROM_TELEPHONE } from "../constants/ordersConstants";
 
 const orderReducer = (state = {}, action) => {
     switch (action.type) {

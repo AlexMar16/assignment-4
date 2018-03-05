@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 class Offers extends React.Component {
     render() {

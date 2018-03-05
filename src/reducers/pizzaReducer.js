@@ -1,4 +1,4 @@
-import { GET_PIZZA } from '../constants/pizzaConstants';
+import { GET_PIZZA } from "../constants/pizzaConstants";
 
 const pizzaReducer = (state = {}, action) => {
     switch (action.type) {

@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/app.js',
+    entry: ['babel-polyfill', './src/app.js'],
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
@@ -10,7 +10,7 @@ module.exports = {
     },
     module: {
         rules: [
-            { enforce: 'pre', test: /\.js$/, exclude: /node_modules/, use: 'babel-loader' },
+            { enforce: 'pre', test: /\.js$/, exclude: /node_modules/, use: 'eslint-loader' },
             { test: /\.js$/, exclude: /node_modules/, use: 'babel-loader' },
             { test: /\.less$/, use: [
                 { loader: 'style-loader' },

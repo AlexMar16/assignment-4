@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Pizza from '../Pizza/Pizza';
-import { getAllPizzas } from '../../actions/pizzaActions';
+import React from "react";
+import { connect } from "react-redux";
+import Pizza from "../Pizza/Pizza";
+import { getAllPizzas } from "../../actions/pizzaActions";
 
 class Menu extends React.Component {
     componentDidMount() {
