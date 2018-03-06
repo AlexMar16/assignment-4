@@ -9,10 +9,22 @@ class Menu extends React.Component {
         getAllPizzas();
     }
     render() {
-        const { pizzas } = this.props;
+        const { pizzas, cart } = this.props;
+        let checkout = null;
+        if(cart.length > 0) {
+            checkout = <button>Check out</button>;
+        }
         return(
-            <div className="container">
-                {pizzas.map(p => <Pizza key={p.id} pizza={p} />)}
+            <div>
+                <div className="row">
+                    <div className="col-9"></div>
+                    <div className="col-3">
+                        {checkout}
+                    </div>
+                </div>
+                <div className="container">
+                    {pizzas.map(p => <Pizza key={p.id} pizza={p} />)}
+                </div>
             </div>
         );
     }
@@ -20,8 +32,8 @@ class Menu extends React.Component {
 
 };
 
-const mapStateToProps = ({ pizzas }) => {
-    return { pizzas }
+const mapStateToProps = ({ pizzas, cart }) => {
+    return { pizzas, cart }
 
 };
 

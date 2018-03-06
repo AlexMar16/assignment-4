@@ -22,7 +22,9 @@ import { fillCart } from "./actions/cartActions";
 class App extends React.Component {
     componentDidMount() {
         const { fillCart } = this.props;
-        fillCart();
+        if(localStorage.getItem("CART")) {
+            fillCart();
+        }
     }
 
     render() {

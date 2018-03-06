@@ -1,4 +1,4 @@
-import { FILL_CART, ADD_TO_CART } from "../constants/cartConstants";
+import { FILL_CART, ADD_TO_CART, CLEAR_CART } from "../constants/cartConstants";
 
 const initialState = {
     cart: []
@@ -7,7 +7,8 @@ const initialState = {
 const cartReducer = (state = [], action) => {
     switch(action.type) {
         case FILL_CART: return action.payload === null ? initialState : state.cart = action.payload;
-        case ADD_TO_CART: {
+        case CLEAR_CART : return [];
+        case ADD_TO_CART: 
             const { name, description, price } = action.payload;
             return [
                 ...state, 
@@ -16,8 +17,7 @@ const cartReducer = (state = [], action) => {
                     description: description,
                     price: price
                 }
-            ]
-        }
+            ];
         default: return state;
     }
 }

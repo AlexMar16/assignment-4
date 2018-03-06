@@ -1,4 +1,4 @@
-import { FILL_CART, CART, ADD_TO_CART, GET_CART } from "../constants/cartConstants";
+import { FILL_CART, CART, ADD_TO_CART, CLEAR_CART } from "../constants/cartConstants";
 
 export const fillCart = () => {
     return {
@@ -15,9 +15,9 @@ export const addToCart = (item) => {
     }
 }
 
-export const getCart = () => {
+export const clearCart = () => {
     return {
-        type : GET_CART,
+        type: CLEAR_CART,
         payload: ""
     }
 }

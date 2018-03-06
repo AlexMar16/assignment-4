@@ -8,17 +8,13 @@ import { addToCart, getCart } from "../../actions/cartActions";
 class Pizza extends React.Component {
 
     addToCart() {
-        const { pizza, addToCart, getCart, cart } = this.props;
+        const { pizza, addToCart, cart } = this.props;
         addToCart(pizza);
-        // cart.push(pizza);
         let test = [pizza];
-        console.log(cart);
         if(cart) {
             test = [...cart, pizza];
         }
-        console.log(cart);
         localStorage.setItem("CART", JSON.stringify(test));
-        console.log(localStorage.getItem("CART"));
     }
 
     render() {
