@@ -8,7 +8,7 @@ export const fillCart = () => {
 }
 
 export const addToCart = (item) => {
-    const cool = tmp(item)
+    const cool = cartFormat(item);
     return {
         type: ADD_TO_CART,
         payload: cool
@@ -22,7 +22,7 @@ export const clearCart = () => {
     }
 }
 
-const tmp = (pizza) => {
+const cartFormat = (pizza) => {
     const { name, description, price} = pizza;
     return {
         name: name,
