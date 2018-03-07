@@ -6,7 +6,7 @@ import { getPizza } from "../../actions/pizzaActions";
 class PizzaDetail extends React.Component {
     componentDidMount() {
         const { getPizza } = this.props;
-        const { pizzaId} = this.props.match.params;
+        const { pizzaId } = this.props.match.params;
         getPizza(pizzaId);
     }
 

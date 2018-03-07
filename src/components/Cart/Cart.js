@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import CartItem from "../../components/CartItem/CartItem";
 import RaisedButton from "material-ui/RaisedButton";
-import { clearCart } from "../../actions/cartActions";
+import { clearCart, removeFromCart } from "../../actions/cartActions";
 
 class Cart extends React.Component {
     clearCart() {
@@ -12,11 +12,16 @@ class Cart extends React.Component {
         clearCart();
     }
 
+    removeFromCart(index) {
+        const { removeFromCart } = this.props;
+        removeFromCart(index);
+    }
+
     render() {
         const { cart } = this.props;
         const cartItems = cart
             .filter(cartItem => !cartItem.removed)
-            .map((pizza, key) => <CartItem key={key} pizza={pizza}/>)
+            .map((pizza, key) => <CartItem key={key} removeFromCart={this.removeFromCart.bind(this)} pizza={pizza} index={key}/>)
         const style = {
             margin: 12,
         };
@@ -31,14 +36,15 @@ class Cart extends React.Component {
         return (
             <div>
                 <div className="row">
-                    <div className="col-3">
+                    <div className="col-4">
                         <Link to="/checkout">
                             <RaisedButton label="Checkout" primary={true} style={style} />
                         </Link>
                     </div>
-                    <div className="col-3"></div>
-                    <div className="col-3"></div>
-                    <div className="col-3">                        
+                    <div className="col-4">
+                        {/* GET PREVIOUS ORDER */}
+                    </div>
+                    <div className="col-4">                        
                         <RaisedButton label="Clear Cart" onClick={this.clearCart.bind(this)} primary={true} style={style} />
                     </div>
                 </div>
@@ -51,9 +57,8 @@ class Cart extends React.Component {
     }
 }
 
-const mapStateToProps = (reduxStoreState) => {
-    console.log(reduxStoreState.cart);
-    return { cart: reduxStoreState.cart }
+const mapStateToProps = ({ cart }) => {
+    return { cart }
 }
 
 Cart.propTypes = {
@@ -61,4 +66,4 @@ Cart.propTypes = {
     fillCart: PropTypes.func
 };
 
-export default connect(mapStateToProps, { clearCart })(Cart);
+export default connect(mapStateToProps, { clearCart,removeFromCart })(Cart);

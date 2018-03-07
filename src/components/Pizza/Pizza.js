@@ -36,7 +36,7 @@ class Pizza extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col-6">
-                        <Link to={`pizzas/${id}`}>
+                        <Link to={`/pizzas/${id}`}>
                             <RaisedButton label="Mmm... what's this" primary={true} style={style} />
                         </Link>
                     </div>
