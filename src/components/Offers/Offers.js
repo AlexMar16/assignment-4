@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { connect } from 'react-redux';
 import Offer from '../Offer/Offer';
 import { getAllOffers } from '../../actions/offerActions';

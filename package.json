@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/AlexMar16/assignment-4#readme",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "eslint": "^4.18.2",
     "isomorphic-fetch": "^2.2.1",
     "material-ui": "^0.20.0",
     "prop-types": "^15.6.0",
@@ -31,6 +33,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
@@ -41,6 +44,8 @@
     "css-loader": "^0.28.10",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-react": "^7.7.0",
     "html-webpack-plugin": "^2.30.1",
     "jest": "^22.4.2",
     "less": "^3.0.1",

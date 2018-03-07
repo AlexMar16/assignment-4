@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
-import { getPizza } from '../../actions/pizzaActions';
+import React from "react";
+import { connect } from "react-redux";
+// import { PropTypes } from "prop-types";
+import { getPizza } from "../../actions/pizzaActions";
 
 class PizzaDetail extends React.Component {
     componentDidMount() {
@@ -13,13 +13,13 @@ class PizzaDetail extends React.Component {
     render() {
         const { name, description, price, image } = this.props.pizza;
         return(
-                <div className="pizza-wrapper">
-                    <div className="pizza-image"></div>
-                        <img src={image} alt="" />
-                    <div className="pizza-name">{name}</div>
-                    <div className="pizza-description">{description}</div>
-                    <div className="pizza-price">{price}</div>
-                </div>
+            <div className="pizza-wrapper">
+                <div className="pizza-image"></div>
+                <img src={image} alt="" />
+                <div className="pizza-name">{name}</div>
+                <div className="pizza-description">{description}</div>
+                <div className="pizza-price">{price}</div>
+            </div>                
 
         );
     }
