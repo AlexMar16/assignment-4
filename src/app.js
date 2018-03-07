@@ -14,9 +14,8 @@ import Cart from './components/Cart/Cart';
 import NavBar from './components/NavBar/NavBar';
 import Menu from './components/Menu/Menu';
 import PizzaDetail from './components/PizzaDetail/PizzaDetail';
-
+import OfferDetail from './components/OfferDetail/OfferDetail';
 /* import { PropTypes } from 'prop-types'; */
-
 
 class App extends React.Component {
     render() {
@@ -29,6 +28,7 @@ class App extends React.Component {
                                 <Route path="/offers" component={Offers} />
                                 <Route exact path="/pizzas" component={Menu} />
                                 <Route path="/pizzas/:pizzaId" component={PizzaDetail} />
+                                <Route path="/offers/:offerId" component={OfferDetail} />
                                 <Route path="/about" component={About} />
                                 <Route path="/cart" component={Cart} />
                                 <Route exact path="/" component={Menu} />

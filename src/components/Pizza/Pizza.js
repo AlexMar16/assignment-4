@@ -17,7 +17,6 @@ const Pizza = ({ pizza }) => {
     );
 };
 
-
 Pizza.propTypes = {
     pizza: PropTypes.shape({
         name: PropTypes.string,
