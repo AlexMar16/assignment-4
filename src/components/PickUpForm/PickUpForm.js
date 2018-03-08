@@ -6,10 +6,11 @@ import { setDeliveryInfo } from "../../actions/checkoutActions";
 class PickUpForm extends React.Component {
     constructor(props) {
         super(props);
+        const { name, telephone } = this.props.checkout.information;
         this.state = {
             fields: {
-                name: "",
-                telephone: ""
+                name: name,
+                telephone: telephone
             },
             validators: {
                 empty: (elem) => !elem.value ? `No ${elem.name} provided` :  "",
@@ -53,4 +54,8 @@ class PickUpForm extends React.Component {
     }
 }
 
-export default connect(null, { setDeliveryInfo })(PickUpForm);
+const mapStateToProps = ({ checkout }) => {
+    return { checkout }
+}
+
+export default connect(mapStateToProps, { setDeliveryInfo })(PickUpForm);

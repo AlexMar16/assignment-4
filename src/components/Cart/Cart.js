@@ -19,13 +19,13 @@ class Cart extends React.Component {
 
     render() {
         const { cart } = this.props;
-        const cartItems = cart
+        const cartItems = cart.list
             .filter(cartItem => !cartItem.removed)
             .map((pizza, key) => <CartItem key={key} removeFromCart={this.removeFromCart.bind(this)} pizza={pizza} index={key}/>)
         const style = {
             margin: 12,
         };
-        if(cart.length == 0 || cartItems.length == 0) {
+        if(cart.list.length == 0 || cartItems.length == 0) {
             return (
                 <div>
                     <h3 className="page-name">Mmmm... I like</h3>
@@ -62,7 +62,11 @@ const mapStateToProps = ({ cart }) => {
 }
 
 Cart.propTypes = {
-    cart: PropTypes.array,
+    cart: PropTypes.shape({
+        list: PropTypes.array,
+        total: PropTypes.number,
+        containsOffer: PropTypes.bool
+    }),
     fillCart: PropTypes.func
 };
 

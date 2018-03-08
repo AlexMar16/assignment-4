@@ -12,6 +12,7 @@ import PickUpForm from "../PickUpForm/PickUpForm";
 import DeliveryMethod from "../DeliveryMethod/DeliveryMethod";
 import CartItem from "../CartItem/CartItem";
 import { addStep, subStep, setMethod } from "../../actions/checkoutActions";
+import { removeFromCart } from "../../actions/cartActions";
 
 class Checkout extends React.Component {
 
@@ -30,13 +31,18 @@ class Checkout extends React.Component {
         setMethod(e.target.value)
     }
 
+    removeFromCart(index) {
+        const { removeFromCart } = this.props;
+        removeFromCart(index);
+    }
+
     
     getStepContent() {
         const { checkout, cart } = this.props
         const { stepIndex, deliveryMethod } = checkout;
-        const cartItems = cart
+        const cartItems = cart.list
             .filter(cartItem => !cartItem.removed)
-            .map((pizza, key) => <CartItem key={key} pizza={pizza}/>)
+            .map((pizza, key) => <CartItem key={key} pizza={pizza} removeFromCart={this.removeFromCart.bind(this)} index={key}/>)
         switch (stepIndex) {
             case 0:
                 return <GetIt handleCheck={this.handleCheck.bind(this)} currentMethod={deliveryMethod} />;
@@ -59,7 +65,7 @@ class Checkout extends React.Component {
         const { checkout, cart } = this.props;
         const { finished, stepIndex, deliveryMethod, information } = checkout;
         let content = this.getStepContent();
-        if(cart.length == 0) {
+        if(cart.list.length == 0) {
             return(<p>You have to have something in your cart to check it out :/ </p>);
         }
         return (
@@ -116,4 +122,4 @@ const mapStateToProps = ({ checkout, cart }) =>  {
     return { checkout, cart };
 }
 
-export default connect(mapStateToProps, { addStep, subStep, setMethod })(Checkout);
+export default connect(mapStateToProps, { addStep, subStep, setMethod, removeFromCart })(Checkout);

@@ -1,4 +1,9 @@
-import { INCREMENT_STEP, DECREMENT_STEP, SET_DMETHOD, SET_DINFO } from "../constants/checkoutConstants";
+import { 
+    INCREMENT_STEP, 
+    DECREMENT_STEP, 
+    SET_DMETHOD, 
+    SET_DINFO,
+    RESTART_CHECKOUT } from "../constants/checkoutConstants";
 
 export const addStep = () => {
     return {
@@ -23,5 +28,11 @@ export const setDeliveryInfo = (information) => {
     return {
         type: SET_DINFO,
         payload: information
+    }
+}
+
+export const restartCheckout = () => {
+    return {
+        type: RESTART_CHECKOUT
     }
 }

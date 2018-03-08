@@ -1,4 +1,9 @@
-import { INCREMENT_STEP, DECREMENT_STEP, SET_DMETHOD, SET_DINFO } from "../constants/checkoutConstants";
+import { 
+    INCREMENT_STEP, 
+    DECREMENT_STEP, 
+    SET_DMETHOD, 
+    SET_DINFO,
+    RESTART_CHECKOUT } from "../constants/checkoutConstants";
 
 const initalState = {
     finished: false,
@@ -36,10 +41,9 @@ const checkoutReducer = (state = initalState, action) => {
                 ...state,
                 information: action.payload
             };
-            console.log(object);
-            state = object;
-            console.log(state);
+            return state = object;
         }
+        case RESTART_CHECKOUT: return state = initalState;
         default: return state;
     }
 }

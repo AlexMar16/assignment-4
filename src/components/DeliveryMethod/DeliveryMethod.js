@@ -1,22 +1,28 @@
 import React from "react";
 import { connect } from "react-redux";
 import TextField from "material-ui/TextField";
+import validator from "validator";
 import { setDeliveryInfo } from "../../actions/checkoutActions";
 
 class DeliveryMethod extends React.Component {
 
     constructor(props) {
         super(props);
+        const { name, address, city, telephone, zip } = this.props.checkout.information;
         this.state = {
             fields: {
-                name: "",
-                address: "",
-                city: "",
-                telephone: "",
-                zip: ""
+                name: name,
+                address: address,
+                city: city,
+                telephone: telephone,
+                zip: zip
             },
             validators: {
-                empty: (elem) => !elem.value ? `No ${elem.name} provided` :  "",
+                name: () => !this.state.fields.name ? "No name provided" :  "",
+                address: () => !this.state.fields.address ? "No address provided" :  "",
+                city: () => !this.state.fields.city ? "No city provided" :  "",
+                telephone: () => !this.state.fields.telephone ? "No telephone provided" :  "",
+                zip: () => !this.state.fields.zip ? "No postal code provided" :  "",
             }
         }
     }
@@ -35,7 +41,6 @@ class DeliveryMethod extends React.Component {
 
     render() {
         const { fields, validators } = this.state;
-        console.log(fields);
         return(
             <div>                
                 <h4>DRIVE IT TO ME NOW</h4>
@@ -43,7 +48,7 @@ class DeliveryMethod extends React.Component {
                     hintText="Name.."
                     name="name"
                     value={fields.name}
-                    errorText={validators.empty({ value: fields.name, name: "name"})}
+                    errorText={validators.name()}
                     onChange={this.onChange.bind(this)}
                 />
                 <br/>
@@ -51,7 +56,7 @@ class DeliveryMethod extends React.Component {
                     name="address"
                     hintText="Address.."
                     value={fields.address}
-                    errorText={validators.empty({ value: fields.address, name: "address"})}
+                    errorText={validators.address()}
                     onChange={this.onChange.bind(this)}
                 />
                 <br/>
@@ -59,7 +64,7 @@ class DeliveryMethod extends React.Component {
                     name="city"
                     hintText="City.."
                     value={fields.city}
-                    errorText={validators.empty({ value: fields.city, name: "city"})}
+                    errorText={validators.city()}
                     onChange={this.onChange.bind(this)}
                 />
                 <br/>
@@ -67,7 +72,7 @@ class DeliveryMethod extends React.Component {
                     name="telephone"
                     hintText="Telephone.."
                     value={fields.telephone}
-                    errorText={validators.empty({ value: fields.telephone, name: "telephone"})}
+                    errorText={validators.telephone()}
                     onChange={this.onChange.bind(this)}
                 />
                 <br/>
@@ -75,7 +80,7 @@ class DeliveryMethod extends React.Component {
                     name="zip"
                     hintText="Postal code.."
                     value={fields.zip}
-                    errorText={validators.empty({ value: fields.zip, name: "postal code"})}
+                    errorText={validators.zip()}
                     onChange={this.onChange.bind(this)}
                 />
             </div>
@@ -83,4 +88,8 @@ class DeliveryMethod extends React.Component {
     }
 }
 
-export default connect(null, { setDeliveryInfo })(DeliveryMethod);
+const mapStateToProps = ({ checkout }) => {
+    return { checkout }
+}
+
+export default connect(mapStateToProps, { setDeliveryInfo })(DeliveryMethod);
