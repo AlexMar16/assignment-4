@@ -35,6 +35,7 @@ class PickUpForm extends React.Component {
         let fields = Object.assign({}, this.state.fields);
         fields[e.target.name] = e.target.value;
         this.setState({ fields }, ()=> {
+            const { setDeliveryInfo } = this.props;
             if(validators.name()) {
                 setDeliveryInfo({...fields, name: ""})
                 return;
