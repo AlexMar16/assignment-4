@@ -1,4 +1,4 @@
-import { GET_ALL_OFFERS } from '../constants/offersConstants';
+import { GET_ALL_OFFERS } from "../constants/offersConstants";
 
 const offersReducer = (state = [], action) => {
     switch (action.type) {

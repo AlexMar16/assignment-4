@@ -62,13 +62,9 @@ class Checkout extends React.Component {
     checkInformation() {
         const { information, deliveryMethod } = this.props.checkout;
         const { name, address, telephone, zip, city} = information;
-        console.log(information);
         if(deliveryMethod === "pickup") {
-            console.log(name);
-            console.log(telephone);
             return (!name || !telephone); 
         }
-        console.log(information);
         return (!name || !address || !telephone || !zip || !city);
     }
 
@@ -84,7 +80,6 @@ class Checkout extends React.Component {
     
     render() {
         const contentStyle = {margin: "0 16px"};
-        console.log(this.props.checkout);
         const { checkout, cart } = this.props;
         const { finished, stepIndex, deliveryMethod, information } = checkout;
         let content = this.getStepContent();

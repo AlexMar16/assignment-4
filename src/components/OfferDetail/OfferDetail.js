@@ -12,6 +12,7 @@ class OfferDetail extends React.Component {
     }
 
     render() {
+        console.log(offer);
         const { offer, price, validFor } = this.props.offer;
         console.log("Hello!");
         return(
@@ -25,8 +26,16 @@ class OfferDetail extends React.Component {
 };
 
 const mapStateToProps = ({offer}) => {
-    console.log(offer);
     return { offer }
 }
+
+OfferDetail.propTypes = {
+    offer: PropTypes.shape({
+        id: PropTypes.number,
+        offer: PropTypes.string,
+        validFor: PropTypes.string
+    })
+};
+
 
 export default connect(mapStateToProps ,{ getOffer })(OfferDetail);

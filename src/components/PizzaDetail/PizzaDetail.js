@@ -25,6 +25,7 @@ class PizzaDetail extends React.Component {
     }
 };
 
+
 const mapStateToProps = ({pizza}) => {
     return { pizza }
 }

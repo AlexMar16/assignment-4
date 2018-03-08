@@ -1,4 +1,4 @@
-import { GET_OFFER } from '../constants/offersConstants';
+import { GET_OFFER } from "../constants/offersConstants";
 
 const offerItemReducer = (state = [], action) => {
     switch (action.type) {
