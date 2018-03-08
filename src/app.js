@@ -19,7 +19,6 @@ import { fillCart } from "./actions/cartActions";
 
 /* import { PropTypes } from "prop-types"; */
 
-
 class App extends React.Component {
     componentDidMount() {
         const { fillCart } = this.props;
@@ -38,6 +37,7 @@ class App extends React.Component {
                             <Route path="/offers" component={Offers} />
                             <Route exact path="/pizzas" component={Menu} />
                             <Route path="/pizzas/:pizzaId" component={PizzaDetail} />
+                            <Route path="/offers/:offerId" component={OfferDetail} />
                             <Route path="/about" component={About} />
                             <Route path="/cart" component={Cart} />
                             <Route path="/checkout" component={Checkout} />
