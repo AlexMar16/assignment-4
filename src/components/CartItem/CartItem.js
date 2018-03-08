@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { PropTypes } from "prop-types";
 import RaisedButton from "material-ui/RaisedButton";
 
 const CartItem = ({ pizza, removeFromCart, index }) => {
