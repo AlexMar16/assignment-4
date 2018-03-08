@@ -4,6 +4,7 @@ import Pizza from "../Pizza/Pizza";
 import { getAllPizzas } from "../../actions/pizzaActions";
 import { Link } from "react-router-dom";
 import RaisedButton from "material-ui/RaisedButton";
+import {PropTypes} from "prop-types";
 
 class Menu extends React.Component {
     componentDidMount() {
@@ -11,6 +12,7 @@ class Menu extends React.Component {
         getAllPizzas();
     }
     render() {
+        console.log(this.props);
         const { pizzas, cart } = this.props;
         let checkout = null;
         // console.log(JSON.parse(localStorage.getItem("CART")));
@@ -43,5 +45,9 @@ const mapStateToProps = ({ pizzas, cart }) => {
     return { pizzas, cart }
 
 };
+
+Menu.propTypes = {
+    getAllPizzas: PropTypes.func  
+}
 
 export default connect(mapStateToProps, { getAllPizzas })(Menu);

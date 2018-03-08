@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-// import { PropTypes } from "prop-types";
+import { PropTypes } from "prop-types";
 import { getPizza } from "../../actions/pizzaActions";
 
 class PizzaDetail extends React.Component {
@@ -30,4 +30,7 @@ const mapStateToProps = ({pizza}) => {
     return { pizza }
 }
 
+PizzaDetail.PropTypes = {
+    getPizza: PropTypes.func
+}
 export default connect(mapStateToProps ,{getPizza})(PizzaDetail);
