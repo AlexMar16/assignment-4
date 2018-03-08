@@ -3,7 +3,6 @@ import {
     ORDER_POST_FAIL,
     ORDER_POST_SUCCESS,
     GET_ORDER_FAIL } from "../constants/ordersConstants";
-import { setCart } from "./cartActions";
 import fetch from "isomorphic-fetch";
 
 

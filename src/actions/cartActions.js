@@ -1,9 +1,9 @@
 import { FILL_CART,
-CART, 
-ADD_TO_CART, 
-CLEAR_CART, 
-REMOVE_FROM_CART,
-SET_CART } from "../constants/cartConstants";
+    CART, 
+    ADD_TO_CART, 
+    CLEAR_CART, 
+    REMOVE_FROM_CART,
+    SET_CART } from "../constants/cartConstants";
 
 export const fillCart = () => {
     return {
