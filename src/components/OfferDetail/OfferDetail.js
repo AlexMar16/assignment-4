@@ -7,14 +7,11 @@ class OfferDetail extends React.Component {
     componentDidMount() {
         const { getOffer } = this.props;
         const { offerId } = this.props.match.params;
-        console.log("compodaælsdkf");
         getOffer(offerId);
     }
 
     render() {
-        console.log(offer);
         const { offer, price, validFor } = this.props.offer;
-        console.log("Hello!");
         return(
             <div className="pizza-wrapper">
                 <div className="pizza-name">{offer}</div>

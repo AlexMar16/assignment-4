@@ -12,10 +12,8 @@ class Menu extends React.Component {
         getAllPizzas();
     }
     render() {
-        console.log(this.props);
         const { pizzas, cart } = this.props;
         let checkout = null;
-        // console.log(JSON.parse(localStorage.getItem("CART")));
         if(cart.list.length > 0) {
             const style = {
                 margin: 12,
