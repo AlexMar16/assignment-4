@@ -8,13 +8,8 @@ import { addToCart, getCart } from "../../actions/cartActions";
 class Pizza extends React.Component {
 
     addToCart() {
-        const { pizza, addToCart, cart } = this.props;
+        const { pizza, addToCart } = this.props;
         addToCart(pizza);
-        let test = [pizza];
-        if(cart) {
-            test = [...cart, pizza];
-        }
-        localStorage.setItem("CART", JSON.stringify(test));
     }
 
     render() {
@@ -36,7 +31,7 @@ class Pizza extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col-6">
-                        <Link to={`pizzas/${id}`}>
+                        <Link to={`/pizzas/${id}`}>
                             <RaisedButton label="Mmm... what's this" primary={true} style={style} />
                         </Link>
                     </div>
@@ -60,7 +55,7 @@ Pizza.propTypes = {
 };
 
 const mapStateToProps = ({ cart }) => {
-    return { cart: cart }
+    return { cart }
 }
 
 export default connect(mapStateToProps, { addToCart, getCart } )(Pizza);

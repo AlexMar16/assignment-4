@@ -13,22 +13,22 @@ const NavBar = ({ logo }) => {
                     exact
                     to="/pizzas"
                     activeClassName="active"
-                    className="nav-link"> pizzas</NavLink>
+                    className="nav-link"> Menu </NavLink>
                 <NavLink
                     exact
                     to="/offers"
                     activeClassName="active"
-                    className="nav-link"> offers</NavLink>
+                    className="nav-link">Offers</NavLink>
                 <NavLink
                     exact
                     to="/cart"
                     activeClassName="active"
-                    className="nav-link"> cart</NavLink>
+                    className="nav-link">Cart</NavLink>
                 <NavLink
                     exact
                     to="/about"
                     activeClassName="active"
-                    className="nav-link"> about</NavLink>
+                    className="nav-link">About</NavLink>
             </div>
         </nav>
 

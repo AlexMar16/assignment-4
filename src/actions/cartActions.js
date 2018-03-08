@@ -1,4 +1,4 @@
-import { FILL_CART, CART, ADD_TO_CART, CLEAR_CART } from "../constants/cartConstants";
+import { FILL_CART, CART, ADD_TO_CART, CLEAR_CART, REMOVE_FROM_CART } from "../constants/cartConstants";
 
 export const fillCart = () => {
     return {
@@ -22,11 +22,19 @@ export const clearCart = () => {
     }
 }
 
+export const removeFromCart = (index) => {
+    return {
+        type: REMOVE_FROM_CART,
+        payload: index
+    }
+}
+
 const cartFormat = (pizza) => {
     const { name, description, price} = pizza;
     return {
         name: name,
         description: description,
-        price: price
+        price: price,
+        removed: false
     };
 }
