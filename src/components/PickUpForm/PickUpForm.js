@@ -43,7 +43,6 @@ class PickUpForm extends React.Component {
                 setDeliveryInfo({...fields, telephone: ""})
                 return;
             }
-            console.log("changin");
             setDeliveryInfo(fields)
         });
     }

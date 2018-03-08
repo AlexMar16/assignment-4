@@ -6,9 +6,16 @@ const NavBar = ({ logo }) => {
     return(
         <nav className="navbar navbar-default">
             <div className="container-fluid">
+            <NavLink
+                    exact
+                    to="/pizzas"
+                    activeClassName="active"
+                    className="nav-link">
                 <div className="navbar-header navbar-logo">
                     <img className="main-image" src={logo} alt="logoImage" />
                 </div>
+                </NavLink>
+
                 <NavLink
                     exact
                     to="/pizzas"

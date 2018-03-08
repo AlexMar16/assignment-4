@@ -25,8 +25,6 @@ const CartItem = ({ pizza, removeFromCart, index }) => {
     );
 }
 
-
-
 CartItem.propTypes = {
     pizza: PropTypes.shape({
         name: PropTypes.string,

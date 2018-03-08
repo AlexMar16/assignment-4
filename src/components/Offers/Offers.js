@@ -1,7 +1,7 @@
 import React from "react";
-import { connect } from 'react-redux';
-import Offer from '../Offer/Offer';
-import { getAllOffers } from '../../actions/offerActions';
+import { connect } from "react-redux";
+import Offer from "../Offer/Offer";
+import { getAllOffers } from "../../actions/offerActions";
 
 class Offers extends React.Component {
     componentDidMount() {
@@ -11,7 +11,6 @@ class Offers extends React.Component {
 
     render() {
         const { allOffers } = this.props;
-        console.log(allOffers);
         return(
             <div className="container">
                {allOffers.map(p => <Offer key={p.id} offerListItem={p} />)}
