@@ -8,11 +8,13 @@ import {
 import RaisedButton from "material-ui/RaisedButton";
 import FlatButton from "material-ui/FlatButton";
 import GetIt from "../GetIt/GetIt";
+import { Redirect } from "react-router-dom";
 import PickUpForm from "../PickUpForm/PickUpForm";
 import DeliveryMethod from "../DeliveryMethod/DeliveryMethod";
 import CartItem from "../CartItem/CartItem";
-import { addStep, subStep, setMethod } from "../../actions/checkoutActions";
-import { removeFromCart } from "../../actions/cartActions";
+import { addStep, subStep, setMethod, restartCheckout } from "../../actions/checkoutActions";
+import { removeFromCart, clearCart } from "../../actions/cartActions";
+import { submitOrder } from "../../actions/orderActions";
 
 class Checkout extends React.Component {
 
@@ -81,15 +83,29 @@ class Checkout extends React.Component {
         }
         return false;
     }
+
+    inTheOven() {
+        const { submitOrder, clearCart, cart, checkout, restartCheckout } = this.props;
+        submitOrder({
+            total: cart.total,
+            pizzas: cart.list,
+            telephone: checkout.information.telephone,
+            information: checkout.information,
+            deliveryMethod: checkout.deliveryMethod
+        });
+        clearCart();
+        restartCheckout();
+    }
     
     render() {
         const contentStyle = {margin: "0 16px"};
         console.log(this.props.checkout);
         const { checkout, cart } = this.props;
-        const { finished, stepIndex, deliveryMethod, information } = checkout;
+        const { finished, stepIndex } = checkout;
         let content = this.getStepContent();
+        let inOven = "Are you sure you want this heavenly food?";
         if(cart.list.length == 0) {
-            return(<p>You have to have something in your cart to check it out :/ </p>);
+            return(<Redirect to="/pizzas"></Redirect> );
         }
         return (
             <form>
@@ -107,14 +123,17 @@ class Checkout extends React.Component {
                     </Stepper>
                     <div style={contentStyle}>
                         {finished ? (
-                            <p><a
-                                href="#"
-                                onClick={(event) => {
-                                    event.preventDefault();
-                                    this.setState({stepIndex: 0, finished: false});
-                                }}
-                            >Click here
-                            </a> to reset the example.</p>
+                            <div>
+                                <p> {inOven} </p>
+                                <RaisedButton 
+                                    label="Confirm"
+                                    primary={true}
+                                    onClick={() => {
+                                        inOven = "The pizza is in the oven!"
+                                        this.inTheOven();
+                                    }}
+                                />
+                            </div>
                         ) : (
                             <div>
                                 {content}
@@ -145,4 +164,4 @@ const mapStateToProps = ({ checkout, cart }) =>  {
     return { checkout, cart };
 }
 
-export default connect(mapStateToProps, { addStep, subStep, setMethod, removeFromCart })(Checkout);
+export default connect(mapStateToProps, { addStep, subStep, setMethod, removeFromCart, submitOrder, clearCart, restartCheckout })(Checkout);

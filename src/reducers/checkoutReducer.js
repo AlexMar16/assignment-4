@@ -10,7 +10,6 @@ const initalState = {
     stepIndex: 0,
     deliveryMethod: "",
     information: {},
-    next: false,
 }
 
 const checkoutReducer = (state = initalState, action) => {
@@ -43,7 +42,7 @@ const checkoutReducer = (state = initalState, action) => {
             };
             return state = object;
         }
-        case RESTART_CHECKOUT: return state = initalState;
+        case RESTART_CHECKOUT: return initalState;
         default: return state;
     }
 }

@@ -1,12 +1,12 @@
-import { FILL_CART, ADD_TO_CART, CLEAR_CART, REMOVE_FROM_CART, CART } from "../constants/cartConstants";
+import { FILL_CART, ADD_TO_CART, CLEAR_CART, REMOVE_FROM_CART, CART, SET_CART } from "../constants/cartConstants";
 
 const initialState = {
     list: [],
-    total: 0,
-    containsOffer: false
+    total: 0
 }
 
 const cartReducer = (state = initialState, action) => {
+    console.log(action);
     switch(action.type) {
         case FILL_CART: return action.payload === null ? initialState : state = action.payload;
         case CLEAR_CART : 
@@ -40,6 +40,9 @@ const cartReducer = (state = initialState, action) => {
             };
             localStorage.setItem(CART, JSON.stringify(removeCart));
             return state = removeCart;
+        case SET_CART: return {
+            ...action.payload.payload
+        }
         default: return state;
     }
 }

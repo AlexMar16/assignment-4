@@ -17,8 +17,10 @@ class Cart extends React.Component {
         removeFromCart(index);
     }
 
+
     render() {
         const { cart } = this.props;
+        console.log(cart);
         const cartItems = cart.list
             .filter(cartItem => !cartItem.removed)
             .map((pizza, key) => <CartItem key={key} removeFromCart={this.removeFromCart.bind(this)} pizza={pizza} index={key}/>)
@@ -28,8 +30,12 @@ class Cart extends React.Component {
         if(cart.list.length == 0 || cartItems.length == 0) {
             return (
                 <div>
-                    <h3 className="page-name">Mmmm... I like</h3>
+                    <h3 className="page-name">Wait!! I forgot to order</h3>
                     <p>It seems that your cart is empty :(</p>
+                    <br/>
+                    <Link to="/lastOrder">
+                        <RaisedButton label="Get last order" primary={true} style={style} />
+                    </Link>
                 </div>
             )
         }
@@ -42,7 +48,9 @@ class Cart extends React.Component {
                         </Link>
                     </div>
                     <div className="col-4">
-                        {/* GET PREVIOUS ORDER */}
+                        <Link to="/lastOrder">
+                            <RaisedButton label="Get last order" primary={true} style={style} />
+                        </Link>
                     </div>
                     <div className="col-4">                        
                         <RaisedButton label="Clear Cart" onClick={this.clearCart.bind(this)} primary={true} style={style} />
