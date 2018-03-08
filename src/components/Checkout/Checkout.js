@@ -79,7 +79,6 @@ class Checkout extends React.Component {
     }
     
     render() {
-        console.log(this.props);
         const contentStyle = {margin: "0 16px"};
         const { checkout, cart } = this.props;
         const { finished, stepIndex, deliveryMethod, information } = checkout;

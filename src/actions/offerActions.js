@@ -6,7 +6,6 @@ export const getAllOffers = () => {
 };
 
 export const getOffer = (offerID) => {
-    console.log(offerID);
     return dispatch => fetch(`http://localhost:3600/api/offers/${offerID}`).then(json => json.json()).then(data => dispatch(getOfferSuccess(data)));
 };
 
@@ -18,7 +17,6 @@ const getAllOffersSuccess = (allOffers) => {
 }
 
 const getOfferSuccess = (offer) => {
-    console.log("GOT THE OFFER");
     return {
         type: GET_OFFER,
         payload: offer

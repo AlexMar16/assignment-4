@@ -48,6 +48,7 @@ class PickUpForm extends React.Component {
         });
     }
 
+
     render() {
         const { fields, validators } = this.state;
         return(
