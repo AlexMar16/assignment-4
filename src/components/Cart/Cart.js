@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import CartItem from "../../components/CartItem/CartItem";
 import RaisedButton from "material-ui/RaisedButton";
 import { clearCart } from "../../actions/cartActions";
 
 class Cart extends React.Component {
-    tmp() {
+    clearCart() {
         const { clearCart } = this.props;
-        localStorage.setItem("CART", "");
         clearCart();
     }
 
@@ -31,9 +31,15 @@ class Cart extends React.Component {
         return (
             <div>
                 <div className="row">
-                    <div className="col-9"></div>
                     <div className="col-3">
-                        <RaisedButton label="Checkout" onClick={this.tmp.bind(this)} primary={true} style={style} />
+                        <Link to="/checkout">
+                            <RaisedButton label="Checkout" primary={true} style={style} />
+                        </Link>
+                    </div>
+                    <div className="col-3"></div>
+                    <div className="col-3"></div>
+                    <div className="col-3">                        
+                        <RaisedButton label="Clear Cart" onClick={this.clearCart.bind(this)} primary={true} style={style} />
                     </div>
                 </div>
                 <h3 className="page-name">Mmmm... I like</h3>

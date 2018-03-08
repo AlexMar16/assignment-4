@@ -14,6 +14,7 @@ import Cart from "./components/Cart/Cart";
 import NavBar from "./components/NavBar/NavBar";
 import Menu from "./components/Menu/Menu";
 import PizzaDetail from "./components/PizzaDetail/PizzaDetail";
+import Checkout from "./components/Checkout/Checkout";
 import { fillCart } from "./actions/cartActions";
 
 /* import { PropTypes } from "prop-types"; */
@@ -39,6 +40,7 @@ class App extends React.Component {
                             <Route path="/offers/:offerId" component={OfferDetail} />
                             <Route path="/about" component={About} />
                             <Route path="/cart" component={Cart} />
+                            <Route path="/checkout" component={Checkout} />
                             <Route exact path="/" component={Menu} />
                             <Route render={({ location }) => (
                                 <div>
