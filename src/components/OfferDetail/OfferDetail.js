@@ -19,7 +19,6 @@ class OfferDetail extends React.Component {
                 <div className="pizza-name">{offer}</div>
                 <div className="pizza-description">{validFor}</div>
                 <div className="pizza-price">{price}</div>
-                <div className="pizza-price">My name is Beggi</div>
             </div>
         );
     }
