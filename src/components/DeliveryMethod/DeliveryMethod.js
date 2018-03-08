@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import TextField from "material-ui/TextField";
 import validator from "validator";
 import { setDeliveryInfo } from "../../actions/checkoutActions";
+import { PropTypes }  from "prop-types";
 
 class DeliveryMethod extends React.Component {
 
@@ -17,6 +18,8 @@ class DeliveryMethod extends React.Component {
                 telephone: telephone,
                 zip: zip
             },
+            
+
             validators: {
                 name: () => !this.state.fields.name ? "No name provided" :  "",
                 address: () => !this.state.fields.address ? "No address provided" :  "",
@@ -38,6 +41,7 @@ class DeliveryMethod extends React.Component {
     }
 
     onChange(e) {
+        
         const { validators } = this.state;
         let fields = Object.assign({}, this.state.fields);
         fields[e.target.name] = e.target.value;
@@ -64,6 +68,7 @@ class DeliveryMethod extends React.Component {
     }
 
     render() {
+                
         const { fields, validators } = this.state;
         return(
             <div>                
@@ -115,5 +120,9 @@ class DeliveryMethod extends React.Component {
 const mapStateToProps = ({ checkout }) => {
     return { checkout }
 }
+
+DeliveryMethod.propTypes = {
+    information: PropTypes.object
+};
 
 export default connect(mapStateToProps, { setDeliveryInfo })(DeliveryMethod);

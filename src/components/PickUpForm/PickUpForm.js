@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import TextField from "material-ui/TextField";
 import { setDeliveryInfo } from "../../actions/checkoutActions";
 import validator from "validator";
+import { PropTypes } from "prop-types";
 
 class PickUpForm extends React.Component {
     constructor(props) {
@@ -43,10 +44,10 @@ class PickUpForm extends React.Component {
                 setDeliveryInfo({...fields, telephone: ""})
                 return;
             }
-            console.log("changin");
             setDeliveryInfo(fields)
         });
     }
+
 
     render() {
         const { fields, validators } = this.state;
@@ -75,5 +76,10 @@ class PickUpForm extends React.Component {
 const mapStateToProps = ({ checkout }) => {
     return { checkout }
 }
+
+PickUpForm.propTypes = {
+    information: PropTypes.object
+};
+
 
 export default connect(mapStateToProps, { setDeliveryInfo })(PickUpForm);

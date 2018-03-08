@@ -1,5 +1,7 @@
 import React from "react";
 import {RadioButton, RadioButtonGroup} from "material-ui/RadioButton";
+import {PropTypes} from "prop-types";
+
 
 const GetIt = ({ handleCheck, currentMethod }) => {
     const styles = {
@@ -11,6 +13,7 @@ const GetIt = ({ handleCheck, currentMethod }) => {
         },
     };
     return(
+        
         <div>
             <h4>So how are you going to get it?</h4>
             <RadioButtonGroup name="deliveryMethod" defaultSelected={currentMethod}>
@@ -29,6 +32,12 @@ const GetIt = ({ handleCheck, currentMethod }) => {
             </RadioButtonGroup>
         </div>
     );
+
+    GetIt.PropTypes = {
+        handleCheck: PropTypes.func.isRequired,
+        currentMethod: PropTypes.func.isRequired
+    }
 }
+
 
 export default GetIt;

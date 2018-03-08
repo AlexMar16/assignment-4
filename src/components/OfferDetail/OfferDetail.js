@@ -7,13 +7,11 @@ class OfferDetail extends React.Component {
     componentDidMount() {
         const { getOffer } = this.props;
         const { offerId } = this.props.match.params;
-        console.log("compodaælsdkf");
         getOffer(offerId);
     }
 
     render() {
         const { offer, price, validFor } = this.props.offer;
-        console.log("Hello!");
         return(
             <div className="pizza-wrapper">
                 <div className="pizza-name">{offer}</div>
@@ -25,8 +23,16 @@ class OfferDetail extends React.Component {
 };
 
 const mapStateToProps = ({offer}) => {
-    console.log(offer);
     return { offer }
 }
+
+OfferDetail.propTypes = {
+    offer: PropTypes.shape({
+        id: PropTypes.number,
+        offer: PropTypes.string,
+        validFor: PropTypes.string
+    })
+};
+
 
 export default connect(mapStateToProps ,{ getOffer })(OfferDetail);

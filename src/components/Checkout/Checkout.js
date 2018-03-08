@@ -15,9 +15,10 @@ import CartItem from "../CartItem/CartItem";
 import { addStep, subStep, setMethod, restartCheckout } from "../../actions/checkoutActions";
 import { removeFromCart, clearCart } from "../../actions/cartActions";
 import { submitOrder } from "../../actions/orderActions";
+import { PropTypes } from "prop-types";
+
 
 class Checkout extends React.Component {
-
     handleNext() {
         const { addStep } = this.props;
         addStep();
@@ -64,13 +65,9 @@ class Checkout extends React.Component {
     checkInformation() {
         const { information, deliveryMethod } = this.props.checkout;
         const { name, address, telephone, zip, city} = information;
-        console.log(information);
         if(deliveryMethod === "pickup") {
-            console.log(name);
-            console.log(telephone);
             return (!name || !telephone); 
         }
-        console.log(information);
         return (!name || !address || !telephone || !zip || !city);
     }
 
@@ -99,7 +96,6 @@ class Checkout extends React.Component {
     
     render() {
         const contentStyle = {margin: "0 16px"};
-        console.log(this.props.checkout);
         const { checkout, cart } = this.props;
         const { finished, stepIndex } = checkout;
         let content = this.getStepContent();
@@ -163,5 +159,22 @@ class Checkout extends React.Component {
 const mapStateToProps = ({ checkout, cart }) =>  {
     return { checkout, cart };
 }
+
+Checkout.propTypes = {
+    checkout: PropTypes.shape({
+        deliveryMethod: PropTypes.string,
+        finished: PropTypes.bool,
+        information: PropTypes.object,
+        next: PropTypes.bool,
+        stepIndex: PropTypes.int
+
+    }),
+    cart: PropTypes.shape({
+        containsOffer: PropTypes.bool,
+        list: PropTypes.array,
+        total: PropTypes.int
+    })
+};
+
 
 export default connect(mapStateToProps, { addStep, subStep, setMethod, removeFromCart, submitOrder, clearCart, restartCheckout })(Checkout);
