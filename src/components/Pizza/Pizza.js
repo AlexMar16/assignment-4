@@ -55,7 +55,7 @@ Pizza.propTypes = {
 };
 
 const mapStateToProps = ({ cart }) => {
-    return { cart: cart }
+    return { cart }
 }
 
 export default connect(mapStateToProps, { addToCart, getCart } )(Pizza);
