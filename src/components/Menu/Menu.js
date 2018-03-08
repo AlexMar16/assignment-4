@@ -28,8 +28,6 @@ class Menu extends React.Component {
             </div>
         );
     }
-
-
 };
 
 const mapStateToProps = ({ pizzas, cart }) => {

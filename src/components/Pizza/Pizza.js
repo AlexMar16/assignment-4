@@ -49,7 +49,6 @@ class Pizza extends React.Component {
     }
 };
 
-
 Pizza.propTypes = {
     pizza: PropTypes.shape({
         name: PropTypes.string,
