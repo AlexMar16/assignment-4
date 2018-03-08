@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import TextField from "material-ui/TextField";
 import { setDeliveryInfo } from "../../actions/checkoutActions";
+import validator from "validator";
 
 class PickUpForm extends React.Component {
     constructor(props) {
@@ -13,20 +14,37 @@ class PickUpForm extends React.Component {
                 telephone: telephone
             },
             validators: {
-                empty: (elem) => !elem.value ? `No ${elem.name} provided` :  "",
+                name: () => !this.state.fields.name ? "No name provided" :  "",
+                telephone: () =>  {
+                    const { telephone } = this.state.fields
+                    const isTelephone = RegExp("^[6-8]{1}[0-9]{2}( |-)*[0-9]{4}$");
+                    if(!telephone) {
+                        return "No telephone provided";
+                    } else if (!validator.matches(telephone, isTelephone)) {
+                        return "Invalid phone number";
+                    } else {
+                        return ""
+                    }
+                },
             }
         }
     }
 
     onChange(e) {
+        const { validators } = this.state;
         let fields = Object.assign({}, this.state.fields);
         fields[e.target.name] = e.target.value;
         this.setState({ fields }, ()=> {
-            const { name, telephone } = fields;
-            if(name && telephone) {
-                const { setDeliveryInfo } = this.props;
-                setDeliveryInfo(fields)
+            const { setDeliveryInfo } = this.props;
+            if(validators.name()) {
+                setDeliveryInfo({...fields, name: ""})
+                return;
+            } else if(validators.telephone()) {
+                setDeliveryInfo({...fields, telephone: ""})
+                return;
             }
+            console.log("changin");
+            setDeliveryInfo(fields)
         });
     }
 
@@ -38,7 +56,7 @@ class PickUpForm extends React.Component {
                     hintText="Name.."
                     name="name"
                     value={fields.name}
-                    errorText={validators.empty({ value: fields.name, name: "name"})}
+                    errorText={validators.name()}
                     onChange={this.onChange.bind(this)}
                 />
                 <br/>
@@ -46,7 +64,7 @@ class PickUpForm extends React.Component {
                     name="telephone"
                     hintText="Telephone.."
                     value={fields.telephone}
-                    errorText={validators.empty({ value: fields.telephone, name: "telephone"})}
+                    errorText={validators.telephone()}
                     onChange={this.onChange.bind(this)}
                 />
             </div>

@@ -58,6 +58,29 @@ class Checkout extends React.Component {
                 return "You\"re a long way from home sonny jim!";
         }
     }
+
+    checkInformation() {
+        const { information, deliveryMethod } = this.props.checkout;
+        const { name, address, telephone, zip, city} = information;
+        console.log(information);
+        if(deliveryMethod === "pickup") {
+            console.log(name);
+            console.log(telephone);
+            return (!name || !telephone); 
+        }
+        console.log(information);
+        return (!name || !address || !telephone || !zip || !city);
+    }
+
+    checkDisabled() {
+        const { stepIndex, deliveryMethod } = this.props.checkout;
+        if (stepIndex === 0 && !deliveryMethod) {
+            return true;
+        } else if(stepIndex === 1 && this.checkInformation()) {
+            return true
+        }
+        return false;
+    }
     
     render() {
         const contentStyle = {margin: "0 16px"};
@@ -104,7 +127,7 @@ class Checkout extends React.Component {
                                     /> 
                                     <RaisedButton
                                         label={stepIndex === 2 ? "Finish" : "Next"}
-                                        disabled={(stepIndex === 0 && !deliveryMethod) || (stepIndex === 1 && Object.keys(information).length === 0 && information.constructor === Object)}
+                                        disabled={this.checkDisabled()}
                                         primary={true}
                                         onClick={this.handleNext.bind(this)}
                                     />
